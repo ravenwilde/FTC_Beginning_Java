@@ -133,6 +133,89 @@ public class Rina_Sparkle_Party extends OpMode
     }
 
     /*
+     * LED CONTROL METHOD #1: setAllLEDs (no parameters)
+     *
+     * Uses the class variables ledPositionEven and ledPositionOdd
+     * Best when: You've already calculated the colors elsewhere
+     */
+    private void setAllLEDs() {
+        led0.setPosition(ledPositionEven);
+        led1.setPosition(ledPositionOdd);
+        led2.setPosition(ledPositionEven);
+        led3.setPosition(ledPositionOdd);
+        led4.setPosition(ledPositionEven);
+        led5.setPosition(ledPositionOdd);
+    }
+
+    /*
+     * LED CONTROL METHOD #2: setAllLEDs with parameters
+     *
+     * Takes the even and odd positions as parameters
+     * Best when: You want to set colors directly without using class variables
+     *
+     * Example usage: setAllLEDs(0.388, 0.611);
+     *
+     * Note: This is called "method overloading" - same name, different parameters
+     */
+    private void setAllLEDs(double evenPosition, double oddPosition) {
+        led0.setPosition(evenPosition);
+        led1.setPosition(oddPosition);
+        led2.setPosition(evenPosition);
+        led3.setPosition(oddPosition);
+        led4.setPosition(evenPosition);
+        led5.setPosition(oddPosition);
+    }
+
+    /*
+     * LED CONTROL METHOD #3: setAllLEDsSameColor
+     *
+     * Sets ALL LEDs to the same color (no alternating pattern)
+     * Best when: You want a solid color across all LEDs
+     *
+     * Example usage: setAllLEDsSameColor(0.500);  // All green
+     */
+    private void setAllLEDsSameColor(double position) {
+        led0.setPosition(position);
+        led1.setPosition(position);
+        led2.setPosition(position);
+        led3.setPosition(position);
+        led4.setPosition(position);
+        led5.setPosition(position);
+    }
+
+    /*
+     * BONUS METHOD: setIndividualLED
+     *
+     * Sets a specific LED by number (0-5)
+     * Useful for creating chase patterns or targeting specific LEDs
+     *
+     * Example usage: setIndividualLED(2, 0.722);  // Set LED 2 to violet
+     */
+    private void setIndividualLED(int ledNumber, double position) {
+        switch(ledNumber) {
+            case 0:
+                led0.setPosition(position);
+                break;
+            case 1:
+                led1.setPosition(position);
+                break;
+            case 2:
+                led2.setPosition(position);
+                break;
+            case 3:
+                led3.setPosition(position);
+                break;
+            case 4:
+                led4.setPosition(position);
+                break;
+            case 5:
+                led5.setPosition(position);
+                break;
+        }
+    }
+
+
+    /*
      * Code to run ONCE after the driver hits STOP
      */
     @Override
